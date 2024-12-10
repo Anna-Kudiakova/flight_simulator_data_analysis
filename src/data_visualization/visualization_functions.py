@@ -126,7 +126,7 @@ def save_all_results():
 
 def plot_time_series_for_median_trials(participants_data, closest_trials, column_name, parameter_name, y_unit, sampling_rate=30):
     """
-    Plots the time series for the closest-to-median trials in novice and experienced groups.
+    Plots the time series for the closest-to-median sss in novice and experienced groups.
 
     Parameters:
         participants_data (dict): Nested dictionary of data {pilot_id: {trial_id: DataFrame}}.

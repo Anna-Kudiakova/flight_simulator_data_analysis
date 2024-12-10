@@ -8,5 +8,7 @@ PROCESSED_DATA_DIR = os.path.join(BASE_DIR, "processed_trials", "processed_trial
 PROCESSED_DATA_DIR_EXTENDED = os.path.join(BASE_DIR, "processed_trials", "processed_trials_extended.pkl")
 TRIAL_CONDITION_DIR = os.path.join(BASE_DIR, "trial_conditions", "trial_info.csv")
 PILOT_METADATA_DIR = os.path.join(BASE_DIR, "pilot_info", "pilot_metadata.csv")
+Y_TSFRESH_DIR = os.path.join(BASE_DIR, "tsfresh_data", "y_tsfresh.pkl")
+X_TSFRESH_DIR = os.path.join(BASE_DIR, "tsfresh_data", "x_tsfresh.pkl")
 
 CSV_DELIMITER = ";"

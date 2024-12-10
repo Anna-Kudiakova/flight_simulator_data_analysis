@@ -18,10 +18,10 @@ def main():
     participants_data_easy_conditions = get_filtered_participant_data(participants_data, trials_easy_conditions)
 
     # print(f"Participant number: {len(participants_data_easy_conditions)}")
-    # for participant, trials in participants_data_easy_conditions.items():
+    # for participant, sss in participants_data_easy_conditions.items():
     #     print(f"Participant: {participant}")
-    #     print(f"Number of trials: {len(trials)}")
-    #     for trial_name, df in trials.items():
+    #     print(f"Number of sss: {len(sss)}")
+    #     for trial_name, df in sss.items():
     #         print(f"  Trial: {trial_name}")
     #         print(df.head())
 

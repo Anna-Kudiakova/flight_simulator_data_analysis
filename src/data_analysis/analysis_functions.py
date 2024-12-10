@@ -329,14 +329,14 @@ def find_median_trial(participants_data, novice_pilots, experienced_pilots, colu
                                                                column_name)
 
     def find_closest_trial(pilot_data, pilot_trials, column_name):
-        # Calculate the overall median for the pilot's data across trials
+        # Calculate the overall median for the pilot's data across sss
         overall_median = np.median(pilot_data)
 
         # Track the closest trial to the median
         closest_trial = None
         closest_distance = float('inf')
 
-        # Iterate over trials to find the trial closest to the median
+        # Iterate over sss to find the trial closest to the median
         for trial_id, df in pilot_trials.items():
             if column_name in df.columns:
                 trial_median = np.median(df[column_name].values)
