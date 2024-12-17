@@ -1,16 +1,13 @@
 import os
 import pickle
 
-from matplotlib import pyplot as plt
-from sklearn.decomposition import PCA
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-from sklearn.preprocessing import StandardScaler
 from tsfresh import extract_features
-from tsfresh.feature_extraction import MinimalFCParameters, EfficientFCParameters
+from tsfresh.feature_extraction import EfficientFCParameters
 
 from src.machine_learning.machine_learning_functions import prepare_tsfresh_data, encode_labels, \
-    select_relevant_features, define_pca_components_number, hyperparameter_tuning
-from src.utils.config import PROCESSED_DATA_DIR_EXTENDED, COLUMNS_DIR_EXTENDED, TSFRESH_DIR, X_TSFRESH_DIR, \
+    select_relevant_features, define_pca_components_number, logistic_regression, custom_split, custom_cross_validation, \
+    xgboost_model, svm_model, mlp_model, random_forest_model, custom_cross_validation_xgboost
+from src.utils.config import PROCESSED_DATA_DIR_EXTENDED, COLUMNS_DIR_EXTENDED, X_TSFRESH_DIR, \
     Y_TSFRESH_DIR
 from src.utils.data_filtration import load_pilot_metadata
 from src.utils.data_loader import load_or_process_data
@@ -67,6 +64,9 @@ def main():
 
         x_tsfresh = relevant_features_tsfresh.values
 
+        os.makedirs(os.path.dirname(x_tsfresh_path), exist_ok=True)
+        os.makedirs(os.path.dirname(y_tsfresh_path), exist_ok=True)
+
         with open(x_tsfresh_path, "wb") as f:
             pickle.dump(x_tsfresh, f)
         with open(y_tsfresh_path, "wb") as f:
@@ -74,23 +74,15 @@ def main():
 
         print("Data saved successfully.")
 
-    scaler_tsfresh = StandardScaler()
-    x_tsfresh_scaled = scaler_tsfresh.fit_transform(x_tsfresh)
-    n_components_98 = define_pca_components_number(x_tsfresh_scaled, 0.98)
-    pca_tsfresh = PCA(n_components=n_components_98, random_state=42)
-    x_tsfresh_pca = pca_tsfresh.fit_transform(x_tsfresh_scaled)
-    best_clf_tsfresh = hyperparameter_tuning(x_tsfresh_pca, y_tsfresh_cat)
 
-    y_pred = best_clf_tsfresh.predict(x_tsfresh_pca)
+    # model = logistic_regression()
+    # model = random_forest_model()
+    # model = svm_model()
+    # model = mlp_model()
 
-    # Confusion matrix
-    cm = confusion_matrix(y_tsfresh_cat, y_pred, labels=y_tsfresh_cat.cat.categories)
+    custom_cross_validation(x_tsfresh, y_tsfresh_cat, n_test_samples=2, model=model, pca_variance=0.80)
+    # custom_cross_validation_xgboost(x_tsfresh, y_tsfresh_cat, pca_variance=0.8)
 
-    # Display the confusion matrix
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=y_tsfresh_cat.cat.categories)
-    disp.plot(cmap='Blues')
-    plt.title('Confusion Matrix')
-    plt.show()
 
 
 if __name__ == '__main__':

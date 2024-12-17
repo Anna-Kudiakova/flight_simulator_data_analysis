@@ -10,5 +10,9 @@ TRIAL_CONDITION_DIR = os.path.join(BASE_DIR, "trial_conditions", "trial_info.csv
 PILOT_METADATA_DIR = os.path.join(BASE_DIR, "pilot_info", "pilot_metadata.csv")
 Y_TSFRESH_DIR = os.path.join(BASE_DIR, "tsfresh_data", "y_tsfresh.pkl")
 X_TSFRESH_DIR = os.path.join(BASE_DIR, "tsfresh_data", "x_tsfresh.pkl")
+Y_CUSTOM_DIR = os.path.join(BASE_DIR, "tsfresh_data", "y_custom.pkl")
+X_CUSTOM_DIR = os.path.join(BASE_DIR, "tsfresh_data", "x_custom.pkl")
+Y_STAT_DIR = os.path.join(BASE_DIR, "tsfresh_data", "y_stat.pkl")
+X_STAT_DIR = os.path.join(BASE_DIR, "tsfresh_data", "x_stat.pkl")
 
 CSV_DELIMITER = ";"

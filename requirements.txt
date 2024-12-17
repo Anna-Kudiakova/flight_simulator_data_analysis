@@ -1,7 +1,8 @@
-numpy
+numpy<2.1
 pandas
 scipy
 scikit-learn
 matplotlib
 seaborn
 tsfresh
+xgboost
